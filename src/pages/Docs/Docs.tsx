@@ -1,10 +1,9 @@
+import "./styles/Docs.sass";
 import { Stack } from "@mui/material";
-import "./styles/Home.sass";
 
-export const Home = () => {
+export const Docs = () => {
     return (
         <Stack>
-            
         </Stack>
     );
 }
