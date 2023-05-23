@@ -142,7 +142,7 @@ export const Contacts = () => {
                         <Button
                             sx={{ mt: 1.5, mb: -0.8 }}
                             variant="contained"
-                            onClick={() => fetch("http://127.0.0.1/api/v1/addFeedback", {
+                            onClick={() => fetch("http://127.0.0.1:8000/api/v1/addFeedback", {
                                 method: "POST",
                                 headers: {
                                     "Content-Type": "application/json"
