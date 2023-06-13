@@ -21,7 +21,12 @@ class FeedbackController {
             );
             echo $feedback;
         } else {
-            echo json_encode(array("response" => "Данные не дошли или неверные имена полей"));
+            echo json_encode(["response" => "Данные не дошли или неверные имена полей"]);
         }
+    }
+
+    public static function getFeedbacks() {
+        $feedbacks = QueryController::getFeedbacksQuery();
+        echo $feedbacks;
     }
 }
