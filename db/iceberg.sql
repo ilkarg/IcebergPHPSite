@@ -1,7 +1,5 @@
-CREATE TABLE IF NOT EXISTS `feedbacks` (
+CREATE TABLE IF NOT EXISTS `comments` (
     id INTEGER PRIMARY KEY,
     name TEXT,
-    email TEXT,
-    theme TEXT,
     message TEXT
 );

@@ -5,41 +5,23 @@ use PHPSystem\System;
 use PHPHash\Hash;
 
 class QueryController {
-	public static function addFeedbackQuery(string $name, string $email, string $theme, string $message) {
+	public static function addCommentQuery(string $name, string $message) {
         global $orm;
         $orm->connect();
-        $feedback = R::dispense("feedbacks");
-        $feedback->name = $name;
-        $feedback->email = $email;
-        $feedback->theme = $theme;
-        $feedback->message = $message;
-        R::store($feedback);
-        return json_encode(["response" => "Обращение успешно отправлено"]);
+        $comment = R::dispense("comments");
+        $comment->name = $name;
+        $comment->message = $message;
+        R::store($comment);
+        return json_encode(["response" => "Комментарий успешно отправлен"]);
     }
 
-    public static function getFeedbacksQuery() {
+    public static function getCommentsQuery() {
         global $orm;
         $orm->connect();
-        $feedbacks = R::findAll("feedbacks");
-        if ($feedbacks == null) {
+        $comments = R::findAll("comments");
+        if ($comments == null) {
             return json_encode(["response" => "Обращения не найдены"]);
         }
-        return json_encode($feedbacks);
-    }
-
-    public static function loginQuery(string $login, string $password) {
-        session_start();
-        if (isset($_SESSION["user"])) {
-            return json_encode(["response" => "Вы уже находитесь в аккаунте"]);
-        }
-        global $orm;
-        $orm->connect();
-        $user = R::find("users", "login = ? AND password = ?", [$login, Hash::sha256($password, "", 1)]);
-        $user = $user[array_key_first($user)];
-        if ($user == null) {
-            return json_encode(["response" => "Неверные логин или пароль"]);
-        }
-        $_SESSION["user"] = $user;
-        return json_encode(["response" => "Вы успешно вошли в аккаунт"]);
+        return json_encode($comments);
     }
 }
