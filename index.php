@@ -19,7 +19,7 @@ $router = new Router();
 $orm = new SQLite(__DIR__ . "/db/iceberg.db");
 
 // Подключение контроллеров
-include __DIR__ . '/controllers/FeedbackController.php';
+include __DIR__ . '/controllers/CommentController.php';
 include __DIR__ . '/controllers/QueryController.php';
 
 // Подключение файла с маршрутами

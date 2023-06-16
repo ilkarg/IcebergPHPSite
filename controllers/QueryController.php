@@ -20,7 +20,7 @@ class QueryController {
         $orm->connect();
         $comments = R::findAll("comments");
         if ($comments == null) {
-            return json_encode(["response" => "Обращения не найдены"]);
+            return json_encode(["response" => "Комментарии не найдены"]);
         }
         return json_encode($comments);
     }
